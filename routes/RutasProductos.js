@@ -99,16 +99,11 @@ const msgError = { error: "Necesitas ser administrador para acceder a este metod
     // // funcion borrar: permite al administrador borrar un producto de acuerdo al id solicitado. si administrador es false, da un msj de error y no permite acceder al metodo. 
     funcionBorrar = async (req, res) => {
         const {id} = req.params;
-        try {
-            let response = await db.funcionDelete('productos', id);
-            response
-                ? res.send(response)
+            await db.funcionDelete('productos', id)
+                ? res.send('Borraste exitosamente el producto')
                 : res
                         .status(404)
                         .send('Producto no encontrado');
-        } catch (error) {
-            res.send('error')
-        }
         }
     };
 

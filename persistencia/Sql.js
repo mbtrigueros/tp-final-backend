@@ -67,7 +67,7 @@ export default class Sql {
 				.from(tablename, id)
 				.select('*')
 				.where('id', '=', id)
-				.del()
+				.del();
                 return removed || false;
 		} catch (error) {
 			throw new Error(error.message);
