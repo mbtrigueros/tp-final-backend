@@ -21,7 +21,7 @@ export default class Sql {
 			await this.connection.schema.createTable('carrito', (table) => {
 				table.string('id'), table.json('productos');
 			});
-			return `Tablas inicializadas en ${this.connection.client.config.client}`;
+			return console.log("Tablas inicializadas en: ", this.connection.client.config.client);
 		} catch (error) {
 			await this.connection.destroy();
 			throw new Error(error.message);

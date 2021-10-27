@@ -44,7 +44,7 @@ const msgError = { error: "Necesitas ser administrador para acceder a este metod
 		!respuesta && id
 			? res
 					.status(404)
-					.send(respuesta, 'Producto no encontrado')
+					.send('Producto no encontrado')
 			: res.send(respuesta);
             }
         

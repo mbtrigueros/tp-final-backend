@@ -1,5 +1,7 @@
 import sqlite3Options from '../configs/Sqlite3Options.js';
+import mySqlOptions from '../configs/mySqlOptions.js';
 import Sql from './Sql.js';
-const sql = new Sql(sqlite3Options);
+import Memoria from './Memoria.js';
+const sql = new Memoria();
 
 export const db = sql;

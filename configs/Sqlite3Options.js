@@ -8,6 +8,5 @@ const options = {
     useNullAsDefault: true
 }
 
-console.log('Conectando a la base de datos Sqlite3...');
 
 export default options;

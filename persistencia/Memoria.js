@@ -5,7 +5,7 @@ export default class Memoria{
 	funcionIniciarSchemas = async () => {
 		this.connection.productos = [];
 		this.connection.carrito = [];
-		return 'Arrays en memoria inicializados';
+		return console.log('Arrays en memoria inicializados');
 	};
 	funcionCreate = (objectName, productos) => {
 		this.connection[objectName].push(productos);
@@ -17,9 +17,9 @@ export default class Memoria{
 
 	funcionUpdate = (objectName, id, productos) => {
 		let index = this.connection[objectName].findIndex((el) => el.id == id);
-		let producto = this.findById(objectName, id);
-		index && (this.connection[objectName][index] = {id: producto.id, ...productos});
-		return this.findById(objectName, id);
+		let producto = this.funcionFindById(objectName, id);
+		this.connection[objectName][index] = {id: producto.id, date: producto.date, ...productos};
+		return this.connection[objectName][index];
 	};
 	funcionDelete = (objectName, id) => {
 		let index = this.connection[objectName].findIndex((el) => el.id == id);
