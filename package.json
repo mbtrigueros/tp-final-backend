@@ -21,6 +21,7 @@
   "homepage": "https://github.com/mbtrigueros/tp-final-backend#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "firebase-admin": "^10.0.0",
     "knex": "^0.95.11",
     "mongoose": "^6.0.12",
     "mysql": "^2.18.1",
