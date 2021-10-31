@@ -1,9 +1,8 @@
-
 import { timeStamp } from 'console';
 import admin from 'firebase-admin';
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
-const serviceAccount = require("../ecommerce-firebase-f156b-firebase-adminsdk-u1r4e-6bdd56aaf3.json");
+const serviceAccount = require("archivo .json que te da firebase");
 
 
 export default class Firebase {
@@ -13,7 +12,7 @@ export default class Firebase {
 	funcionIniciarSchemas = async () => {
 		let firebase = await admin.initializeApp({
 			credential: admin.credential.cert(serviceAccount),
-			databaseURL: "https://ecommerce-firebase-f156b-default-rtdb.firebaseio.com/",
+			databaseURL: "nombre/de/tu/database",
 		});
 
 		return console.log(`Conexión exitosa a ${firebase.options.credential.projectId}`);

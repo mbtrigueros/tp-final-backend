@@ -19,8 +19,9 @@ export default class Sql {
 			});
 			await this.connection.schema.dropTableIfExists('carrito');
 			await this.connection.schema.createTable('carrito', (table) => {
-				table.string('id'), table.json('productos');
+				table.string('id'), table.timestamp('date'), table.string('productos')
 			});
+			
 			return console.log("Tablas inicializadas en: ", this.connection.client.config.client);
 		} catch (error) {
 			await this.connection.destroy();

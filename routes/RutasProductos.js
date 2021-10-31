@@ -100,7 +100,7 @@ const msgError = { error: "Necesitas ser administrador para acceder a este metod
     funcionBorrar = async (req, res) => {
         const {id} = req.params;
             await db.funcionDelete('productos', id)
-                ? res.send('Borraste exitosamente el producto')
+                ? res.send('Producto borrado exitosamente de su carrito')
                 : res
                         .status(404)
                         .send('Producto no encontrado');

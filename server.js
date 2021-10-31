@@ -29,10 +29,10 @@ app.use('/carrito', routerCarrito);
 
 // IMPORTO LAS RUTAS DESPUES DEL ROUTER 
 
-// import RutasCarrito  from './routes/RutasCarrito.js';
+import RutasCarrito  from './routes/RutasCarrito.js';
 import RutasProductos from './routes/RutasProductos.js';
 
-// const rutasCarrito = new RutasCarrito();
+const rutasCarrito = new RutasCarrito();
 const rutasProductos = new RutasProductos();
 
 // PROGRAMA
@@ -46,9 +46,10 @@ routerProductos
 
 
 // RUTAS CARRITO
-// routerCarrito
-//     .get(rutasCarrito.listar, rutasCarrito.funcionListar)
-//     .post(rutasCarrito.agregarID, rutasCarrito.funcionAgregarID)
-//     .delete(rutasCarrito.borrar, rutasCarrito.funcionBorrar);
+routerCarrito
+    .get(rutasCarrito.listar, rutasCarrito.funcionListar)
+    .post(rutasCarrito.agregarID, rutasCarrito.funcionAgregarID)
+    .delete(rutasCarrito.borrar, rutasCarrito.funcionBorrar);
+    //.delete(rutasCarrito.borrarProducto, rutasCarrito.funcionBorrarProducto);
 
 

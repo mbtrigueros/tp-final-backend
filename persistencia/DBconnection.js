@@ -6,6 +6,8 @@ import MongoDb from './MongoDB.js';
 import Firebase from './firebase.js';
 import config from '../configs/mongoDBoptions.js';
 
+//trate de hacer el dao pero se rompia todo (: asi que paso las db manualmente.
+
 const sqlite = new Sql(sqlite3Options);
 const mysql = new Sql(mySqlOptions);
 const memoria = new Memoria();
@@ -13,4 +15,5 @@ const mongoLocal = new MongoDb(config.localUrl, config.options);
 const mongoAtlas = new MongoDb(config.atlasUrl, config.options);
 const firebase = new Firebase();
 
-export const db = firebase;
+
+export const db = memoria;
