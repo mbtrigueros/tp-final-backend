@@ -2,7 +2,7 @@ import { timeStamp } from 'console';
 import admin from 'firebase-admin';
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
-const serviceAccount = require("archivo .json que te da firebase");
+const serviceAccount = require("../db/ecommerce-firebase-f156b-firebase-adminsdk-u1r4e-6bdd56aaf3.json");
 
 
 export default class Firebase {

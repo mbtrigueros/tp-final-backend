@@ -61,7 +61,7 @@ export default class MongoDb {
 			if (removed) return 1;
 			return false;
 		} else {
-			return 'No valid ID.';
+			return 'El ID no es valido.';
 		}
 	};
 }

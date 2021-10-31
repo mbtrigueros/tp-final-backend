@@ -40,6 +40,7 @@ const rutasProductos = new RutasProductos();
 // RUTAS PRODUCTOS
 routerProductos
     .get(rutasProductos.listar, rutasProductos.funcionListar)
+    .get(rutasProductos.listarNombre, rutasProductos.funcionListarNombre)
     .post(rutasProductos.agregar, rutasProductos.funcionAgregar)
     .put(rutasProductos.actualizar, rutasProductos.funcionActualizar)
     .delete(rutasProductos.borrar, rutasProductos.funcionBorrar);
@@ -50,6 +51,5 @@ routerCarrito
     .get(rutasCarrito.listar, rutasCarrito.funcionListar)
     .post(rutasCarrito.agregarID, rutasCarrito.funcionAgregarID)
     .delete(rutasCarrito.borrar, rutasCarrito.funcionBorrar);
-    //.delete(rutasCarrito.borrarProducto, rutasCarrito.funcionBorrarProducto);
 
 

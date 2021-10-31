@@ -14,6 +14,20 @@ export default class Memoria{
 	funcionFind = (objectName) => this.connection[objectName];
 	funcionFindById = (objectName, id) =>
 		this.connection[objectName].find((p) => p.id == id) || false;
+	// funcionFindByName = (objectName, title) =>
+	// 	this.connection[objectName].find((p) => p.title == title) || false;
+	// funcionFindByCode = (objectName, code) =>
+	// 	this.connection[objectName].find((p) => p.code == code) || false;
+
+	// funcionLower = (objectName, el) => {
+	// const min = Math.min(...this.connection[objectName].map(({ el }) => el));
+	// 	this.connection[objectName].filter(({ el }) => e === min);
+	// 	}
+
+	// funcionGreater = (objectName, el) => {
+	// 	const max = Math.max(...this.connection[objectName].map(({ el }) => el));
+	// 	this.connection[objectName].filter(({ el }) => e === max);
+	// 		}
 
 	funcionUpdate = (objectName, id, productos) => {
 		let index = this.connection[objectName].findIndex((el) => el.id == id);

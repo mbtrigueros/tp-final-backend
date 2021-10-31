@@ -4,25 +4,7 @@
 // const { Carrito } = require("./ecommerce/Carrito");
 // const fs = require('fs');
 import Producto from '../ecommerce/Producto.js';
-import fs from 'fs';
 import {db} from '../persistencia/DBconnection.js';
-
-// Establezco variable administrador como true o false
-let administrador = true;
-
-// constante de mensaje error para cuando administrador es false
-const msgError = { error: "Necesitas ser administrador para acceder a este metodo" }
-
-// creo productos
-
-// export const escuadra = new Producto( 0, "Escuadra", "Esto es una escuadra", 123.45, "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png", Math.floor((Math.random() * (5000 - 1 + 1 )) + 1), 10);
-
-// export const calculadora = new Producto( 1, "Calculadora", "Esto es una calculadora", 234.56, "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png", Math.floor((Math.random() * (5000 - 1 + 1 )) + 1), 10);
-
-// // declaro array listaProductos y array carrito; creo un archivo de texto que persiste en la carpeta persistencia
-
-// export let listaProductos = [escuadra, calculadora];
-// fs.writeFileSync('./persistencia/listaProductos.txt', JSON.stringify(listaProductos), 'utf-8');
 
 
 // RUTAS PARA PRODUCTOS
@@ -32,7 +14,7 @@ const msgError = { error: "Necesitas ser administrador para acceder a este metod
         this.listar = '/listar/:id?' 
         this.agregar = '/agregar'
         this.actualizar = '/actualizar/:id'
-        this.borrar = '/borrar/:id'
+        this.borrar = '/borrar/:id'        
     }
  
     // funcion listar: muestra la lista de productos, y de poner un id, muestra el producto con ese id. De no haber productos en la lista, muestra error. De solicitar un producto con un id que no esta en la lista, muestra error. 
@@ -40,16 +22,18 @@ const msgError = { error: "Necesitas ser administrador para acceder a este metod
         const {id} = req.params;
 		let respuesta = id
 			? await db.funcionFindById('productos', id)
-			: await db.funcionFind('productos');
-		!respuesta && id
-			? res
+			: await db.funcionFind('productos') 
+            !respuesta && id 
+            ?
+            res.send(respuesta)
+            :
+			res
 					.status(404)
-					.send('Producto no encontrado')
-			: res.send(respuesta);
+					.send('Producto no encontrado');
             }
-        
+            
 
-    // funcion agregar: permite al administrador agregar un producto a la lista de productos con los parametros propuestos en el body. si administrador es false, da un msj de error y no permite acceder al metodo. 
+    // funcion agregar: permite agregar un producto a la lista de productos con los parametros propuestos en el body. 
     funcionAgregar = async (req, res) => {
         
             let {title, description, price, thumbnail, code, stock} = req.body;
@@ -71,7 +55,7 @@ const msgError = { error: "Necesitas ser administrador para acceder a este metod
 
 
 
-    // // funcion actualizar: permite al administrador actualizar un producto de la lista de productos con los parametros propuestos en el body. si administrador es false, da un msj de error y no permite acceder al metodo. 
+    // // funcion actualizar: permite actualizar un producto de la lista de productos con los parametros propuestos en el body. si el id no coincide con ningun producto, lo indica.
     funcionActualizar = async (req, res) => {
         const {id} = req.params;
         const propiedades = [
@@ -96,7 +80,7 @@ const msgError = { error: "Necesitas ser administrador para acceder a este metod
 					.send('Producto no encontrado');
         }
 
-    // // funcion borrar: permite al administrador borrar un producto de acuerdo al id solicitado. si administrador es false, da un msj de error y no permite acceder al metodo. 
+    // // funcion borrar: permite borrar un producto de acuerdo al id solicitado. si el id no coincide con ningun producto, lo indica.
     funcionBorrar = async (req, res) => {
         const {id} = req.params;
             await db.funcionDelete('productos', id)
@@ -107,12 +91,5 @@ const msgError = { error: "Necesitas ser administrador para acceder a este metod
         }
     };
 
-
-
-
-// le agrego un alias a las clases y las exporto.
-// const rutasCarrito = new RutasCarrito();
-// const rutasProductos = new RutasProductos();
-// module.exports = { rutasCarrito, rutasProductos }
 
 export default RutasProductos 

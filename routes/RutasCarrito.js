@@ -1,11 +1,7 @@
 import Carrito from '../ecommerce/Carrito.js';
-import fs from 'fs';
-
 import {db} from '../persistencia/DBconnection.js';
 
 const carrito = new Carrito();
-//fs.writeFileSync('./persistencia/carrito.txt', JSON.stringify(carrito), 'utf-8');
-
 
 // RUTAS PARA EL CARRITO
  class RutasCarrito {
